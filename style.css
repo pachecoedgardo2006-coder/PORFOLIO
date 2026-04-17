@@ -551,6 +551,15 @@ header {
 /* Efecto para el ícono de Hardware (Tools) */
 .tech-item:hover .fa-tools { color: #49cd15; filter: drop-shadow(0 0 10px #49cd15); }
 
+/* Efecto para el ícono de Illustrator (Pen Nib) */
+.tech-item:hover .fa-pen-nib { color: #FF9A00; filter: drop-shadow(0 0 10px #FF9A00); }
+
+/* Efecto para el ícono de DevOps (Infinity) */
+.tech-item:hover .fa-infinity { color: #2496ED; filter: drop-shadow(0 0 10px #2496ED); }
+
+/* Efecto para el ícono de PHP (Elephant/PHP Logo) */
+.tech-item:hover .fa-php { color: #777BB3; filter: drop-shadow(0 0 10px #777BB3); }
+
 /* --- 7. MY WORK --- */
 .my-work {
     padding: 60px 0;
