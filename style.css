@@ -1055,21 +1055,6 @@ footer {
     background: linear-gradient(to top, #000, transparent);
 }
 
-.footer-links {
-    margin: 20px 0;
-}
-
-.footer-links a {
-    color: var(--text-dim);
-    margin: 0 15px;
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.footer-links a:hover {
-    color: var(--primary-purple);
-}
-
 /* --- ANIMACIONES --- */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
