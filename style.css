@@ -876,49 +876,176 @@ header {
     }
 }
 
-/* --- 10. WORK TOGETHER (Formulario) --- */
-.contact-box {
-    max-width: 60%;
-    margin: 0 auto;
-    padding: 60px 0;
+/* --- 10. MEJORA WORK TOGETHER: MYSTIC FORM --- */
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    padding: 60px;
+    align-items: start;
 }
 
-.contact-form {
+/* Columna de Información */
+.contact-info-side {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px !important;
+    text-align: left !important;
+    transition: var(--transition);
+}
+
+.contact-method i {
+    font-size: 2rem;
+    color: var(--primary-purple);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.contact-method span {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+.contact-method p {
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+/* Redes Sociales Mystic */
+.social-mystic-wrapper {
+    display: flex;
     gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background: var(--primary-purple);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-5px);
+    border-color: #fff;
+}
+
+/* Columna del Formulario */
+.contact-form-side {
+    padding: 40px !important;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
 }
 
 .contact-form input, 
 .contact-form textarea {
-    background: rgba(255, 255, 255, 0.05);
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 12px;
     color: white;
     outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s;
+}
+
+.input-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+    transition: 0.5s ease;
+    transform: translateX(-50%);
+}
+
+.contact-form input:focus ~ .input-gradient,
+.contact-form textarea:focus ~ .input-gradient {
+    width: 100%;
 }
 
 .contact-form input:focus, 
 .contact-form textarea:focus {
-    border-color: var(--primary-purple);
     background: rgba(138, 43, 226, 0.05);
+    border-color: rgba(138, 43, 226, 0.4);
 }
 
-.btn-submit {
-    padding: 15px;
+/* Botón de Envío Optimizado */
+.btn-submit-mystic {
+    width: 100%;
+    padding: 18px;
     background: var(--primary-purple);
     border: none;
+    border-radius: 12px;
     color: white;
-    border-radius: 8px;
-    font-weight: 700;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     transition: var(--transition);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-submit:hover {
-    box-shadow: 0 0 20px var(--accent-glow);
+.btn-submit-mystic:hover {
     transform: scale(1.02);
+    box-shadow: 0 0 30px var(--accent-glow);
+    background: #9d46ff;
+}
+
+.btn-submit-mystic i {
+    transition: 0.4s;
+}
+
+.btn-submit-mystic:hover i {
+    transform: translateX(5px) translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+    
+    .contact-info-side {
+        order: 2;
+    }
+    
+    .contact-form-side {
+        order: 1;
+    }
 }
 
 /* --- FOOTER --- */
