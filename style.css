@@ -12,8 +12,91 @@
     --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-html { 
-    scroll-behavior: smooth; 
+html {
+    scroll-behavior: smooth;
+}
+/* --- 1. LUZ DE SEGUIMIENTO (CURSOR GLOW) --- */
+.cursor-glow {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    /* Eliminamos transiciones complejas para que no haya lag */
+    transition: transform 0.05s linear, opacity 0.3s ease;
+}
+
+/* --- 2. SISTEMA DE FILTROS HOLOGRÁFICOS --- */
+.hologram-vignette {
+    position: fixed;
+    inset: 0;
+    background: none;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.hologram-noise {
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Noise.jpg');
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 101;
+    animation: noiseShift 0.2s steps(2) infinite;
+}
+
+.hologram-scanlines {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(138, 43, 226, 0.05) 51%,
+        transparent 52%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 102;
+    opacity: 0.3;
+}
+
+/* --- 3. ANIMACIONES MÍSTICAS --- */
+@keyframes noiseShift {
+    0% { transform: translate(0,0); }
+    10% { transform: translate(-1%,-1%); }
+    30% { transform: translate(1%, 1%); }
+    50% { transform: translate(-0.5%, 0.5%); }
+    100% { transform: translate(0,0); }
+}
+
+/* --- 4. OPTIMIZACIÓN DE TARJETAS (MOVIMIENTO SUAVE) --- */
+.glass {
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+    will-change: transform; /* Optimización de rendimiento para el script de profundidad */
+}
+
+.glass:hover {
+    box-shadow: 0 0 40px var(--accent-glow), inset 0 0 15px var(--glass-border);
+}
+
+/* Efecto glitch sutil para el texto del Hero */
+.glitch-text {
+    position: relative;
+    text-shadow: 0.05em 0 0 rgba(255, 0, 255, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 255, 0.75),
+                0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+    animation: glitch 500ms infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 0 0 red, -2px 0 0 blue; }
+    20% { text-shadow: -2px 0 0 red, 2px 0 0 blue; }
+    100% { text-shadow: 1px 0 0 red, -1px 0 0 blue; }
 }
 
 
@@ -78,21 +161,13 @@ header {
     margin: 0 auto;
 }
 
-.logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--primary-purple);
-    text-shadow: 0 0 10px var(--accent-glow);
-}
-
-.nav-menu {
+.logo , .nav-menu {
     display: flex;
     list-style: none;
     gap: 30px;
 }
 
-.nav-menu a {
+.logo a, .nav-menu a {
     text-decoration: none;
     color: var(--text-main);
     font-size: 0.9rem;
@@ -101,7 +176,7 @@ header {
     transition: var(--transition);
 }
 
-.nav-menu a:hover {
+.logo a:hover, .nav-menu a:hover {
     color: var(--primary-purple);
     letter-spacing: 1px;
 }
@@ -147,64 +222,60 @@ header {
 /* --- 3. ABOUT ME --- */
 .about-section {
     display: flex;
-    padding: 60px 5%;
+    justify-content: center; /* Centra el contenedor horizontalmente */
+    align-items: center;    /* Centra el contenedor verticalmente */
+    padding: 80px 5% !important; /* Mantenemos el padding, forzándolo si es necesario */
+    min-height: 500px;
 }
 
+/* NUEVO: Ajustes para el contenedor interno del About */
+.about-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo para que no se estire demasiado */
+    gap: 40px; /* Espacio uniforme entre izquierda y derecha */
+}
+
+/* Actualización de ".about-left" */
 .about-left {
-    flex: 0 0 40%;
+    flex: 0 0 45%; /* Aumentamos un poco el espacio para los nombres grandes */
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: left; /* Volvemos a alinear a la izquierda */
 }
 
-.small-title {
-    font-size: 1rem;
-    color: var(--primary-purple);
-    margin-bottom: -10px;
-    text-transform: uppercase;
-    padding: 0px;
-}
-
-.small-txt {
-    font-size: 1rem;
-    color: var(--primary-purple);
-    margin-bottom: -10px;
-    text-transform: uppercase;
-    padding: 20px;
-}
-
-.name-highlight {
-    font-size: 4rem;
-    font-weight: 900;
-    margin: 0;
-}
-
-.name-outline {
-    font-size: 4rem;
-    font-weight: 900;
-    margin-top: -20px;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--primary-purple);
-}
-
-.nice-meet {
-    font-style: italic;
-    margin-top: 10px;
-    opacity: 0.8;
-}
-
+/* Actualización de ".about-right" (Reemplaza el existente) */
 .about-right {
-    flex: 0 0 60%;
-    padding-left: 40px;
+    flex: 0 0 55%; /* Reducimos proporcionalmente */
+    padding-left: 0; /* Quitamos el padding-left fijo que causaba el desplazamiento */
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.about-right h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+/* Ajustes sutiles de texto para mejor balance */
+.small-title {
+    font-size: 0.9rem;
     color: var(--primary-purple);
     text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.name-highlight {
+    font-size: clamp(3rem, 6vw, 5rem); /* Ajuste responsive del tamaño */
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.name-outline {
+    font-size: clamp(3rem, 6vw, 5rem); /* Ajuste responsive del tamaño */
+    font-weight: 900;
+    margin-top: -10px; /* Menos solapamiento */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--primary-purple);
 }
 
 /* --- 4. WHAT I DO --- */
@@ -426,97 +497,155 @@ header {
     }
 }
 
-/* --- 6. TECH STACK VISUAL --- */
+/* --- TECH STACK (Optimizado 3D) --- */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 25px;
-    padding: 50px 5%;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    perspective: 1200px; /* Profundidad de campo */
 }
 
 .tech-item {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 25px 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    transition: var(--transition);
+    cursor: pointer;
     position: relative;
-    cursor: help;
+    
+    /* Configuración 3D */
+    transform-style: preserve-3d;
+    will-change: transform; /* Optimización de hardware */
+    /* IMPORTANTE: Sin transition en transform aquí para evitar lag al mover el mouse */
+    transition: background 0.3s ease, border 0.3s ease; 
 }
 
-/* Contenedor del Icono */
-.tech-icon-wrapper {
-    font-size: 3rem; /* Tamaño grande para el icono */
-    color: var(--primary-purple);
-    filter: drop-shadow(0 0 8px var(--accent-glow));
-    transition: var(--transition);
+/* --- 1. CONFIGURACIÓN DEL CONTENEDOR DE DESCRIPCIÓN --- */
+.tech-tooltip {
+    position: absolute;
+    /* Lo posicionamos arriba de la tarjeta */
+    bottom: 120%; 
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    
+    width: 180px;
+    padding: 12px;
+    background: rgba(15, 15, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    color: white;
+    font-size: 0.85rem;
+    text-align: center;
+
+    /* ESTILO IGUAL AL RESTO DE LA PAGINA */
+    background: rgb(0, 0, 0);
+    border-color: var(--primary-purple);
+    backdrop-filter: blur(15px); /* Desenfoque de cristal */
+    border: 2px solid rgb(121, 0, 190); /* Borde sutil del diseño */
+    border-radius: 15px; /* Bordes redondeados como tus tarjetas */
+    
+    /* Estado inicial invisible */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--primary-color);
+}
+
+/* --- INTERACCIÓN --- */
+
+/* Activa la ventanita */
+.tech-item:hover .tech-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    border-color: rgba(138, 43, 226, 0.5); /* Brillo morado suave al activar */
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+}
+
+
+.tech-item i, .tech-item img {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    transition: transform 0.2s ease-out;
+    pointer-events: none; /* Evita interferencias con el mouse */
 }
 
 .tech-item span {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.85rem;
     font-weight: 500;
-    color: var(--text-dim);
+    color: var(--text-color);
     letter-spacing: 1px;
-    text-transform: uppercase;
+    pointer-events: none;
 }
 
-/* --- EFECTOS HOVER --- */
+/* --- 2. EFECTO DE EXPANSIÓN AL HACER HOVER --- */
 .tech-item:hover {
-    background: rgba(138, 43, 226, 0.1);
+    background: rgba(138, 43, 226, 0.15);
     border-color: var(--primary-purple);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    /* El ítem se expande visualmente */
+    box-shadow: 0 0 30px var(--accent-glow);
 }
 
-.tech-item:hover .tech-icon-wrapper {
-    color: #fff;
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 15px var(--primary-purple));
+/* Ajuste para que el nombre (span) no se pise con el tooltip al activarse */
+.tech-item:hover span {
+    opacity: 0.2; /* El nombre se desvanece para dar foco a la descripción */
+    transform: translateZ(15px);
+    transition: 0.3s;
+}
+
+/* El icono "salta" de la tarjeta */
+.tech-item:hover i, .tech-item:hover img {
+    transform: translateZ(50px) scale(1.1);
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+}
+
+
+.tech-item:hover .tech-icon-wrapper{
+    opacity: 0.4; /* En lugar de 0, para que el icono se vea de fondo */
+    transform: translateZ(20px) translateY(-20px) scale(0.8);
+    transition: 0.4s;
 }
 
 .tech-item:hover span {
-    color: #fff;
-}
-
-/* Tooltip Mystic Mejorado */
-.tech-item::before {
-    content: attr(data-desc);
-    position: absolute;
-    bottom: 120%;
-    left: 50%;
-    transform: translateX(-50%) scale(0.8);
-    background: #0f0f12;
-    color: #e0e0e0;
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    width: 180px;
-    text-align: center;
-    border: 1px solid var(--primary-purple);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    z-index: 100;
-}
-
-.tech-item:hover::before {
+    color: var(--primary-color);
     opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) scale(1);
 }
 
+/* --- 5. LÍNEA DE ESCANEO ESTÁTICA --- */
+/* El triangulito de la ventana (opcional pero queda muy bien) */
+.tech-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Lo pega a la parte de abajo de la ventana */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Creamos el triángulo */
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgb(0, 0, 0); /* Mismo color del borde de la ventana */
+    
+    /* Esto ayuda a que se vea integrado */
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5)); 
+}
+
+@keyframes scanLineVertical {
+    0% { transform: translateY(-150px); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(0); opacity: 0; }
+}
 
 /* Colores personalizados al hacer hover */
 
 /* Python - Azul/Amarillo */
-.tech-item:hover .fa-python { color: #3776AB; filter: drop-shadow(0 0 10px #3776AB); }
+.tech-item:hover .fa-python { color: #00D1FF; filter: drop-shadow(0 0 10px #00D1FF); }
 
 /* JavaScript - Amarillo */
 .tech-item:hover .fa-js { color: #F7DF1E; filter: drop-shadow(0 0 10px #F7DF1E); }
@@ -540,7 +669,7 @@ header {
 .tech-item:hover .fa-file-excel { color: #217346; filter: drop-shadow(0 0 10px #217346); }
 
 /* Word - Azul Office */
-.tech-item:hover .fa-file-word { color: #2B579A; filter: drop-shadow(0 0 10px #2B579A); }
+.tech-item:hover .fa-file-word { color: #b3d1ff; filter: drop-shadow(0 0 10px #2B579A); }
 
 /* UI Design / Palette - Rosa/Morado */
 .tech-item:hover .fa-palette { color: #FF00FF; filter: drop-shadow(0 0 10px #FF00FF); }
@@ -558,7 +687,14 @@ header {
 .tech-item:hover .fa-infinity { color: #2496ED; filter: drop-shadow(0 0 10px #2496ED); }
 
 /* Efecto para el ícono de PHP (Elephant/PHP Logo) */
-.tech-item:hover .fa-php { color: #777BB3; filter: drop-shadow(0 0 10px #777BB3); }
+.tech-item:hover .fa-php { color: #00D1FF; filter: drop-shadow(0 0 10px #00D1FF); }
+
+
+/* Mantén el icono brillante y visible */
+.tech-item:hover .tech-icon-wrapper {
+    transform: scale(1.1);
+    opacity: 1; /* Para que no se tape */
+}
 
 /* --- 7. MY WORK --- */
 .my-work {

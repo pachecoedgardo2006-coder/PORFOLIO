@@ -12,9 +12,19 @@
 
     <div class="galaxy-bg"></div>
 
+    <div class="hologram-vignette"></div>
+    <div class="hologram-noise"></div>
+    <div class="hologram-scanlines"></div>
+
+    <div class="cursor-glow"></div>
+
+
     <header>
         <nav class="nav-container">
-            <div class="logo">EDGARDO PACHECO</div>
+            <ul class="logo">
+                <li><a href="#start">Edgardo Pacheco</a></li>
+            </ul>
+            
             <ul class="nav-menu">
                 <li><a href="#about">About me</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -24,25 +34,29 @@
     </header>
 
     <main>
-        <section class="hero glass">
-            <div class="hero-left">
-                <h1>EDGARDO<br>PACHECO</h1>
-            </div>
-            <div class="hero-right">
-                <h2>Full Stack Software Developer <span class="accent">& Systems Engineer</span></h2>
+        <section id="start" class="hero glass" data-depth="0.05">
+            <div class="hero-wrapper" style="width: 100%; display: flex; align-items: center;"> 
+                <div class="hero-left">
+                    <h1 class="glitch-text" data-text="EDGARDO PACHECO">EDGARDO<br>PACHECO</h1>
+                </div>
+                <div class="hero-right">
+                    <h2>Full Stack Software Developer <span class="accent">& Systems Engineer</span></h2>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="about-section glass">
-            <div class="about-left">
-                <p class="small-title">I am</p>
-                <h2 class="name-highlight">EDGARDO</h2>
-                <h2 class="name-outline">PACHECO</h2>
-                <p class="nice-meet">Nice to meet you</p>
-            </div>
-            <div class="about-right">
-                <h3>About me</h3>
-                <p>I am a young software developer and Systems Engineering student. I have training in data analysis, cybersecurity, and Full Stack development. I stand out for my problem-solving skills and adaptability in collaborative work environments.</p>
+        <section id="about" class="about-section glass" data-depth="0.1">
+            <div class="about-container">
+                <div class="about-left">
+                    <p class="small-title">I am</p>
+                    <h2 class="name-highlight">EDGARDO</h2>
+                    <h2 class="name-outline">PACHECO</h2>
+                    <p class="nice-meet">Nice to meet you</p>
+                </div>
+                <div class="about-right">
+                    <h3>About me</h3>
+                    <p>I am a young software developer and Systems Engineering student. I have training in data analysis, cybersecurity, and Full Stack development. I stand out for my problem-solving skills and adaptability in collaborative work environments.</p>
+                </div>
             </div>
         </section>
 
@@ -172,72 +186,87 @@
             </div>
         </section>
 
-        <section class="tech-stack glass">
-            <div class="section-header-centered" style="padding-top: 40px;">
-                <h2 class="massive-title" style="font-size: 3rem;">TECH STACK</h2>
+        <section class="tech-stack glass" data-depth="0.15">
+            <div class="section-header-centered" style="padding-top: 60px;">
+                <h2 class="massive-title">TECH STACK</h2>
             </div>
                 <div class="tech-grid">
                     <div class="tech-item" data-desc="Proficiency in libraries like Pandas, Tkinter, and backend logic development.">
                         <div class="tech-icon-wrapper"><i class="fab fa-python"></i></div>
                         <span>Python</span>
+                        <div class="tech-tooltip">Proficiency in libraries like Pandas, Tkinter, and backend logic development.</div>
                     </div>
                     <div class="tech-item" data-desc="Creation of dynamic interfaces and client-side logic.">
                         <div class="tech-icon-wrapper"><i class="fab fa-js"></i></div>
                         <span>JavaScript</span>
+                        <div class="tech-tooltip">Creation of dynamic interfaces and client-side logic.</div>
                     </div>
                     <div class="tech-item" data-desc="Design and management of relational databases with SQLite and MySQL.">
                         <div class="tech-icon-wrapper"><i class="fas fa-database"></i></div>
                         <span>SQL Databases</span>
+                        <div class="tech-tooltip">Design and management of relational databases with SQLite and MySQL.</div>
                     </div>
                     <div class="tech-item" data-desc="Professional web layout with a focus on accessibility.">
                         <div class="tech-icon-wrapper"><i class="fab fa-html5"></i></div>
                         <span>HTML5</span>
+                        <div class="tech-tooltip">Professional web layout with a focus on accessibility.</div>
                     </div>
                     <div class="tech-item" data-desc="Modern designs with Glassmorphism and advanced animations.">
                         <div class="tech-icon-wrapper"><i class="fab fa-css3-alt"></i></div>
                         <span>CSS3</span>
+                        <div class="tech-tooltip">Modern designs with Glassmorphism and advanced animations.</div>
                     </div>
                     <div class="tech-item" data-desc="Operational experience in Debian-based Linux environments.">
                         <div class="tech-icon-wrapper"><i class="fab fa-ubuntu"></i></div>
                         <span>Ubuntu</span>
+                        <div class="tech-tooltip">Operational experience in Debian-based Linux environments.</div>
                     </div>
                     <div class="tech-item" data-desc="Data analysis, pivot tables, and administrative information management.">
                         <div class="tech-icon-wrapper"><i class="fas fa-file-excel"></i></div>
                         <span>Excel</span>
+                        <div class="tech-tooltip">Data analysis, pivot tables, and administrative information management.</div>
                     </div>
                     <div class="tech-item" data-desc="Writing professional technical and administrative documentation.">
                         <div class="tech-icon-wrapper"><i class="fas fa-file-word"></i></div>
                         <span>Word</span>
+                        <div class="tech-tooltip">Writing professional technical and administrative documentation.</div>
                     </div>
                     <div class="tech-item" data-desc="Visual design and branding applied to user interfaces.">
                         <div class="tech-icon-wrapper"><i class="fas fa-palette"></i></div>
                         <span>UI Design</span>
+                        <div class="tech-tooltip">Visual design and branding applied to user interfaces.</div>
                     </div>
                     <div class="tech-item" data-desc="Integration of theater logic and POS systems.">
                         <div class="tech-icon-wrapper"><i class="fas fa-microchip"></i></div>
                         <span>Systems</span>
+                        <div class="tech-tooltip">Integration of theater logic and POS systems.</div>
                     </div>
                     <div class="tech-item" data-desc="Version control and collaboration in open source projects.">
                         <div class="tech-icon-wrapper"><i class="fab fa-github"></i></div>
                         <span>GitHub</span>
+                        <div class="tech-tooltip">Version control and collaboration in open source projects.</div>
                     </div>
                         <div class="tech-item" data-desc="Preventive maintenance, equipment assembly and hardware diagnostics.">
                         <div class="tech-icon-wrapper"><i class="fas fa-tools"></i></div>
                         <span>Hardware</span>
+                        <div class="tech-tooltip">Preventive maintenance, equipment assembly and hardware diagnostics.</div>
                     </div>
                     <div class="tech-item" data-desc="Diseño vectorial profesional.">
                         <div class="tech-icon-wrapper"><i class="fas fa-pen-nib"></i></div>
                         <span>Illustrator</span>
+                        <div class="tech-tooltip">Creation of dynamic interfaces and client-side logic.</div>
                     </div>
 
                     <div class="tech-item" data-desc="Frameworks y herramientas de despliegue.">
                         <div class="tech-icon-wrapper"><i class="fas fa-infinity"></i></div>
                         <span>DevOps</span>
+                        <div class="tech-tooltip">Implementation of continuous integration and deployment pipelines.</div>
                     </div>
 
                     <div class="tech-item" data-desc="Lenguaje de servidor para aplicaciones dinámicas.">
                         <div class="tech-icon-wrapper"><i class="fab fa-php"></i></div>
                         <span>PHP</span>
+                        <div class="tech-tooltip">Server-side scripting for dynamic web applications.</div>
                     </div>
                 </div>
         </section>
@@ -464,6 +493,70 @@
         <p>Thank you for visiting my digital portfolio.</p>
         <p class="copy">&copy; 2026 Edgardo Pacheco. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Seleccionamos los elementos clave
+        const cursorGlow = document.querySelector('.cursor-glow');
+        const glassCards = document.querySelectorAll('.glass');
+        const techItems = document.querySelectorAll('.tech-item');
+
+        // 1. Mover el Resplandor del Cursor (Actualizado con RAF para rendimiento)
+        let cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+            // Mueve el resplandor morado con el mouse
+            cursorGlow.style.left = cursorX + 'px';
+            cursorGlow.style.top = cursorY + 'px';
+        });
+
+        // 2. Efecto Parallax de Profundidad (Mantenemos tu lógica funcional)
+        // Usamos RequestAnimationFrame para suavizar y ahorrar CPU
+        function updateParallax() {
+            // Calcula la inclinación basada en la posición del mouse
+            const mousePctX = cursorX / window.innerWidth;
+            const mousePctY = cursorY / window.innerHeight;
+
+            glassCards.forEach(card => {
+                const depth = card.getAttribute('data-depth') || 0.1;
+                const moveX = (mousePctX - 0.5) * (depth * 50); // Ajusta el factor de movimiento para más o menos efecto
+                const moveY = (mousePctY - 0.5) * (depth * 50);
+                // Aplicamos traslación para profundidad visual
+                card.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+            
+            requestAnimationFrame(updateParallax);
+        }
+        
+        // Iniciamos el bucle de parallax
+        requestAnimationFrame(updateParallax);
+
+        const techCards = document.querySelectorAll('.tech-item');
+
+        techCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                
+                // Cálculo de posición relativa (-0.5 a 0.5)
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+                // Multiplicador de rotación (25 grados para que no sea excesivo pero sí fuerte)
+                const rotX = y * -25;
+                const rotY = x * 25;
+
+                // Aplicamos directamente sin transiciones de CSS para respuesta 1:1
+                card.style.transition = "none";
+                card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Al salir, sí aplicamos una transición para que vuelva suavemente
+                card.style.transition = "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)";
+                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            });
+        });
+    </script>
 
 </body>
 </html>
